@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-const BASE_URL = 'https://BASE-URL-API.COM/';
+const BASE_URL = 'https://id.techinasia.com/wp-json/techinasia/3.0/';
 
 type ApiRequest = (
   url: string,
