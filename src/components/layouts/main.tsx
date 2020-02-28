@@ -5,14 +5,14 @@ import Navbar from '../navbar';
 
 interface Props {
   children: React.ReactNode;
-  title: string;
+  title?: string;
   desc?: string;
 }
 
 const SITE_NAME = 'Nano Tech in Asia';
 
 export default function MainLayout(props: Props) {
-  const { children, title, desc } = props;
+  const { children, title = SITE_NAME, desc } = props;
   return (
     <React.Fragment>
       <Head>
