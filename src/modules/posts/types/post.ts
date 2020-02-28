@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 export type PostResponse = AxiosResponse<PostsResult>;
 
 export interface PostsResult {
-  results: { posts: Array<Post> };
+  posts: Array<Post>;
 }
 
 export interface Post {

@@ -28,7 +28,7 @@ export default function MainLayout(props: Props) {
         <meta name="twitter:description" content={desc} />
       </Head>
       <Navbar />
-      <div>
+      <div style={{ marginTop: 100 }}>
         <Container>{children}</Container>
       </div>
     </React.Fragment>
