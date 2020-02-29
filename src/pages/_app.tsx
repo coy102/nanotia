@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import { Provider } from 'react-redux';
 import initStore from '@services/redux_setup/rootStore';
-
+import 'dayjs/locale/id';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class MainApp extends App {
