@@ -19,7 +19,7 @@ export default function ItemBody(props: Props) {
   dayjs.extend(relativeTime).locale('id');
 
   return (
-    <div style={{ marginLeft: 30 }}>
+    <div>
       <Link href={`/[slugpost]`} as={`/${slug}`}>
         <a className="link-content">
           <h5 dangerouslySetInnerHTML={{ __html: title }} />

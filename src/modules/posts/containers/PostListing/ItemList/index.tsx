@@ -17,9 +17,9 @@ export default function(props: Props) {
       {posts && (
         <div>
           {posts.map(post => (
-            <Row key={post.slug} style={{ marginBottom: 20 }}>
-              <Col md={3}>
-                <ItemImage image={post.featured_image} />
+            <Row key={post.slug} style={{ marginBottom: 40 }}>
+              <Col md={4}>
+                <ItemImage image={post.featured_image} slug={post.slug} />
               </Col>
               <Col md={8}>
                 <ItemBody
