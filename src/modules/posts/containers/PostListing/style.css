@@ -1,4 +1,9 @@
 .link-content {
   text-decoration: none;
-  color: '#000' !important;
+  color: #000000;
+}
+
+.link-content:hover {
+  text-decoration: none;
+  color: #dc3545;
 }
