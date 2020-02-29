@@ -7,13 +7,16 @@ import postSelector from '../../dux/selectors';
 import { PostsState } from '../../types/state';
 
 import ItemList from './ItemList';
+import ErrorMessage from '@components/result/ErrorMessage';
 import Loading from '@components/loading';
 
 export default function PostListingContainer() {
   const dispatch = useDispatch();
   const { selectPosts } = postSelector();
 
-  const { isLoading, posts }: PostsState = useSelector(selectPosts());
+  const { isLoading, posts, errorMessage }: PostsState = useSelector(
+    selectPosts()
+  );
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -23,9 +26,10 @@ export default function PostListingContainer() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // handle fetch post
   const handleFetchPosts = () => dispatch(getPosts.request());
 
-  // handle fetch more pokemon infinite scroll logic
+  // handle fetch more post infinite scroll logic
   const handleScroll = debounce(() => {
     if (
       window.innerHeight + window.scrollY >=
@@ -39,6 +43,13 @@ export default function PostListingContainer() {
     <React.Fragment>
       <ItemList posts={posts} />
       {isLoading && <Loading />}
+      {errorMessage && (
+        <ErrorMessage
+          message={errorMessage}
+          onClick={handleFetchPosts}
+          buttonLabel="Refresh"
+        />
+      )}
     </React.Fragment>
   );
 }
