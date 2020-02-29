@@ -24,6 +24,7 @@ const postsReducer = handleActions(
     [GET_POSTS.SUCCESS]: (state, { payload: { posts } }) => ({
       ...state,
       posts,
+      page: state.page + 1,
       isLoading: false,
     }),
     [GET_POSTS.FAILURE]: (state, { payload: { errorMessage } }) => ({
@@ -32,16 +33,16 @@ const postsReducer = handleActions(
       isLoading: false,
     }),
     // Get more listing (infinity scroll fetch)
-    [GET_MORE_POSTS.REQUEST]: state => ({ ...state, isFetching: true }),
+    [GET_MORE_POSTS.REQUEST]: state => ({ ...state, isLoading: true }),
     [GET_MORE_POSTS.SUCCESS]: (state, { payload: { morePost } }) => ({
       ...state,
-      isFetching: false,
+      isLoading: false,
       page: state.page + 1,
-      pokemons: [...state.posts, ...morePost],
+      posts: [...state.posts, ...morePost],
     }),
     [GET_MORE_POSTS.FAILURE]: state => ({
       ...state,
-      isFetching: false,
+      isLoading: false,
     }),
   },
   initialState.listingPost
