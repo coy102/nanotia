@@ -65,7 +65,7 @@ interface Seo {
   image: string;
 }
 
-interface Featuredimage {
+export interface Featuredimage {
   title: string;
   caption: string;
   description: string;
