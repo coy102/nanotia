@@ -54,7 +54,7 @@ interface Permissions {
   can_edit: boolean;
 }
 
-interface Category {
+export interface Category {
   id: string;
   name: string;
   slug: string;

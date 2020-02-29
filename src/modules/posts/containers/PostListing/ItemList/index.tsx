@@ -26,6 +26,7 @@ export default function(props: Props) {
                   date={post.date}
                   excerpt={post.excerpt}
                   title={post.title}
+                  slug={post.slug}
                   authorAvatar={post.author.avatar_url}
                   authorName={post.author.display_name}
                 />

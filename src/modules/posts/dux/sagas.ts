@@ -4,7 +4,7 @@ import { GET_MORE_POSTS, GET_POSTS, GET_POST } from './constants';
 import { getMorePosts, getPosts, getPost } from './actions';
 import postSelector from './selectors';
 import { PostsState } from '../types/state';
-import { PostResponse, PostsResponse } from '../types/post';
+import { PostsResponse } from '../types/post';
 import postServiceApi from '../services/api';
 
 const PER_PAGE = 10;
@@ -14,10 +14,9 @@ const _postSelect = postSelector();
 function* getPostSaga(action: any) {
   try {
     const { payload: slug } = action;
-
-    const res: PostResponse = yield call(_postApi.getPost, slug);
-    const { post } = res.data;
-    yield put(getPost.success({ post }));
+    const res: PostsResponse = yield call(_postApi.getPost, slug);
+    const { posts } = res.data;
+    yield put(getPost.success({ post: posts[0] }));
   } catch (error) {
     yield put(getPost.failure({ errorMessage: error.message }));
   }

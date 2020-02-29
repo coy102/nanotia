@@ -10,6 +10,8 @@ import ItemList from './ItemList';
 import ErrorMessage from '@components/result/ErrorMessage';
 import Loading from '@components/loading';
 
+import './style.css';
+
 export default function PostListingContainer() {
   const dispatch = useDispatch();
   const { selectPosts } = postSelector();
