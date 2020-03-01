@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-const BASE_URL = 'https://BASE-URL-API.COM/';
+const ALLOW_CORS = 'https://cors-anywhere.herokuapp.com/';
+const BASE_URL = `${ALLOW_CORS}https://id.techinasia.com/wp-json/techinasia/3.0/`;
 
 type ApiRequest = (
   url: string,

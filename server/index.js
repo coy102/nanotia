@@ -18,6 +18,11 @@ app
       return app.render(req, res, '/');
     });
 
+    server.get('/:slugpost', (req, res) => {
+      const queryParams = Object.assign({}, req.params, req.query);
+      return app.render(req, res, '/[slugpost]', queryParams);
+    });
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
