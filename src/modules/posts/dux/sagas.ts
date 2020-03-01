@@ -16,7 +16,11 @@ function* getPostSaga(action: any) {
     const { payload: slug } = action;
     const res: PostsResponse = yield call(_postApi.getPost, slug);
     const { posts } = res.data;
-    yield put(getPost.success({ post: posts[0] }));
+    if (posts) {
+      yield put(getPost.success({ post: posts[0] }));
+    } else {
+      yield put(getPost.failure({ errorMessage: 'The article was not found' }));
+    }
   } catch (error) {
     yield put(getPost.failure({ errorMessage: error.message }));
   }

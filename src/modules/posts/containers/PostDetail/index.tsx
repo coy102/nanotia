@@ -12,13 +12,16 @@ import Content from './Content';
 import { useRouter } from 'next/router';
 import { isEmpty } from 'lodash';
 import './style.css';
+import ErrorMessage from '@components/result/ErrorMessage';
 
 export default function PostDetail() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { selectPost } = postSelector();
   const { slugpost } = router.query;
-  const { isLoading, post }: PostState = useSelector(selectPost());
+  const { isLoading, post, errorMessage }: PostState = useSelector(
+    selectPost()
+  );
 
   useEffect(() => {
     handleFetchPost(slugpost);
@@ -28,7 +31,7 @@ export default function PostDetail() {
   const handleFetchPost = slug => dispatch(getPost.request({ slug }));
 
   if (isLoading) return <Loading />;
-
+  if (errorMessage) return <ErrorMessage message={errorMessage} />;
   return (
     <div>
       {!isEmpty(post) && (
