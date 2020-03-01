@@ -12,7 +12,7 @@ export interface PostsState extends BaseState {
 }
 
 export interface PostState extends BaseState {
-  posts: Post;
+  post?: Post;
 }
 
 export interface InitialState {

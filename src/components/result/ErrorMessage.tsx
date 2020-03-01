@@ -3,8 +3,8 @@ import { Alert, Button } from 'react-bootstrap';
 
 interface Props {
   message: string;
-  onClick: any;
-  buttonLabel: string;
+  onClick?: any;
+  buttonLabel?: string;
 }
 
 export default function ErrorMessage(props: Props) {
@@ -12,10 +12,12 @@ export default function ErrorMessage(props: Props) {
 
   return (
     <Alert variant="danger">
-      {message} -{' '}
-      <Button variant="danger" onClick={() => onClick}>
-        {buttonLabel}
-      </Button>
+      {message}
+      {buttonLabel && (
+        <Button variant="danger" onClick={() => onClick}>
+          {buttonLabel}
+        </Button>
+      )}
     </Alert>
   );
 }

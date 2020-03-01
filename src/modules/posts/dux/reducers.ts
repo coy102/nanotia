@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { GET_MORE_POSTS, GET_POSTS } from './constants';
+import { GET_MORE_POSTS, GET_POSTS, GET_POST } from './constants';
 import { InitialState } from '../types/state';
 
 const initialState: InitialState = {
@@ -11,7 +11,33 @@ const initialState: InitialState = {
     morePost: [],
     page: 1,
   },
+  detailPost: {
+    errorMessage: '',
+    isLoading: false,
+    post: {},
+  },
 };
+
+const postReducer = handleActions(
+  {
+    [GET_POST.REQUEST]: state => ({
+      ...state,
+      message: '',
+      isLoading: true,
+    }),
+    [GET_POST.SUCCESS]: (state, { payload: { post } }) => ({
+      ...state,
+      post,
+      isLoading: false,
+    }),
+    [GET_POST.FAILURE]: (state, { payload: { errorMessage } }) => ({
+      ...state,
+      errorMessage,
+      isLoading: false,
+    }),
+  },
+  initialState.detailPost
+);
 
 const postsReducer = handleActions(
   {
@@ -50,4 +76,5 @@ const postsReducer = handleActions(
 
 export default combineReducers({
   listingPost: postsReducer,
+  detailPost: postReducer,
 });

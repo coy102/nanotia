@@ -6,7 +6,11 @@ export default function postSelector() {
   const selectPosts = () =>
     createSelector(postState(), state => state.listingPost);
 
+  const selectPost = () =>
+    createSelector(postState(), state => state.detailPost);
+
   return {
     selectPosts,
+    selectPost,
   };
 }

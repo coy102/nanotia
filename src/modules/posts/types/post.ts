@@ -1,44 +1,48 @@
 import { AxiosResponse } from 'axios';
 
-export type PostResponse = AxiosResponse<PostsResult>;
+export type PostResponse = AxiosResponse<PostResult>;
+export type PostsResponse = AxiosResponse<PostsResult>;
 
 export interface PostsResult {
   posts: Array<Post>;
 }
+export interface PostResult {
+  post: Post;
+}
 
 export interface Post {
-  id: string;
-  date: string;
-  date_gmt: string;
-  guid: string;
-  modified: string;
-  modified_gmt: string;
-  title: string;
-  slug: string;
-  status: string;
-  type: string;
-  template: string;
-  link: string;
-  content: string;
-  excerpt: string;
-  author: Author;
-  editor: string;
-  comment_status: string;
-  comments_count: number;
-  featured_image: Featuredimage;
-  seo: Seo;
-  categories: Array<Category>;
-  tags: Array<Category>;
-  companies: Array<any>;
-  permissions: Permissions;
-  is_review_post: string;
-  internal_talk: boolean;
+  id?: string;
+  date?: string;
+  date_gmt?: string;
+  guid?: string;
+  modified?: string;
+  modified_gmt?: string;
+  title?: string;
+  slug?: string;
+  status?: string;
+  type?: string;
+  template?: string;
+  link?: string;
+  content?: string;
+  excerpt?: string;
+  author?: Author;
+  editor?: string;
+  comment_status?: string;
+  comments_count?: number;
+  featured_image?: Featuredimage;
+  seo?: Seo;
+  categories?: Array<Category>;
+  tags?: Array<Category>;
+  companies?: Array<any>;
+  permissions?: Permissions;
+  is_review_post?: string;
+  internal_talk?: boolean;
   review?: any;
-  featured_video: Featuredvideo;
-  ga_type: string;
-  external_url: string;
-  client_logo: string;
-  client_name: string;
+  featured_video?: Featuredvideo;
+  ga_type?: string;
+  external_url?: string;
+  client_logo?: string;
+  client_name?: string;
 }
 
 interface Featuredvideo {
@@ -50,7 +54,7 @@ interface Permissions {
   can_edit: boolean;
 }
 
-interface Category {
+export interface Category {
   id: string;
   name: string;
   slug: string;
